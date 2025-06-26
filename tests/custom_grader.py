@@ -1,6 +1,5 @@
 import json
 
-# Your custom grading logic
 results = [
     {
         "name": "Functionality Test",
@@ -21,7 +20,3 @@ results = [
         "max_score": 1.0
     }
 ]
-
-# Save the results
-with open("results.json", "w") as f:
-    json.dump(results, f, indent=2)
