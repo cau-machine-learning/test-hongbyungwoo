@@ -7,20 +7,20 @@ tests = [
     {
         "name": "Functionality Test",
         "output": "Passed all edge cases",
-        "score": 0.75,
-        "max_score": 1.0
+        "score": 75,
+        "max_score": 100
     },
     {
         "name": "Style Check", 
         "output": "Minor formatting issues",
-        "score": 0.5,
-        "max_score": 1.0
+        "score": 50,
+        "max_score": 100
     },
     {
         "name": "Bonus Question",
         "output": "Excellent work!",
-        "score": 1.0,
-        "max_score": 1.0
+        "score": 100,
+        "max_score": 100
     }
 ]
 
