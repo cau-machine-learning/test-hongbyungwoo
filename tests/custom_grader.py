@@ -40,7 +40,8 @@ print(f"Total Score: {total_score}/{total_max_score}")
 
 # GitHub Classroom looks for this specific format for points
 print(f"Points: {total_score}")
-print(f"::set-output name=points::{total_score}")
+# Use the new environment file method instead of deprecated set-output
+print(f"POINTS={total_score}", file=open(os.environ.get('GITHUB_OUTPUT', '/dev/null'), 'a') if 'GITHUB_OUTPUT' in os.environ else open('/dev/null', 'w'))
 
 # Generate the autograder result file in the expected format
 autograder_result = {
