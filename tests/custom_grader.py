@@ -4,13 +4,13 @@ results = [
     {
         "name": "Functionality Test",
         "output": "Passed all edge cases",
-        "score": 0.75,
+        "point": 0.75,
         "max-score": 1.0
     },
     {
         "name": "Style Check",
         "output": "Minor formatting issues",
-        "score": 0.5,
+        "point": 0.5,
         "max-score": 1.0
     },
     {
