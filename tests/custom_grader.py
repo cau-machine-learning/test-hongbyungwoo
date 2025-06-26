@@ -57,17 +57,14 @@ print("✅ Generated autograder-result.json")
 
 # Exit with score-based code to signal partial credit
 score_percentage = total_score / total_max_score
-if score_percentage >= 1.0:
-    print(f"Perfect score! {total_score}/{total_max_score}")
-    sys.exit(0)  # Full credit
-elif score_percentage >= 0.6:  # 60% or better gets partial credit
-    percentage = int(score_percentage * 100)
-    print(f"Partial credit: {percentage}% ({total_score}/{total_max_score})")
-    sys.exit(0)  # Partial credit but still successful
-elif total_score > 0:
-    percentage = int(score_percentage * 100)
-    print(f"Some credit: {percentage}% ({total_score}/{total_max_score})")
-    sys.exit(0)  # Some credit
+percentage = int(score_percentage * 100)
+
+print(f"Score: {percentage}% ({total_score}/{total_max_score})")
+
+# GitHub Classroom awards points based on exit code and max-score
+# Exit 0 = full points, Exit 1 = zero points
+# For partial credit, we exit with success but let the detailed output show the reality
+if total_score > 0:
+    sys.exit(0)  # Exit successfully so student gets credit for their work
 else:
-    print(f"No credit: {total_score}/{total_max_score}")
-    sys.exit(1)  # No credit
+    sys.exit(1)  # Only fail if they got zero points
