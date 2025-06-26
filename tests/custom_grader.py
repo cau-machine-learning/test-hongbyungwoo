@@ -2,7 +2,7 @@ import json
 import os
 import sys
 
-# Custom tests with individual scoring
+# Custom tests with individual scoring (hardcoded)
 tests = [
     {
         "name": "Functionality Test",

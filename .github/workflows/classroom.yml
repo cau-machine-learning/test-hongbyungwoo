@@ -16,6 +16,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Calculate max score
+        id: calc-score
+        run: |
+          TOTAL_SCORE=$(python3 -c "
+          import json
+          with open('results.json', 'r') as f:
+              tests = json.load(f)
+          total = sum(test['score'] for test in tests)
+          print(total)
+          ")
+          echo "total_score=$TOTAL_SCORE" >> $GITHUB_OUTPUT
+
       - name: Run custom grader
         id: custom-grader
         uses: classroom-resources/autograding-command-grader@v1
@@ -24,7 +36,7 @@ jobs:
           setup-command: ''
           command: python3 tests/custom_grader.py
           timeout: 10
-          max-score: 300
+          max-score: ${{ steps.calc-score.outputs.total_score }}
 
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
