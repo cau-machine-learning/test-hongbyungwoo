@@ -1,6 +1,5 @@
 import json
 import base64
-import os
 
 # Define your tests
 tests = [
@@ -30,11 +29,10 @@ autograder_result = {
     "tests": tests
 }
 
-# Write to file (optional)
+# Write to file (optional, for debugging or logs)
 with open("autograder-result.json", "w") as f:
     json.dump(autograder_result, f, indent=2)
 
-# Encode and export to GitHub Actions output
+# Encode to base64 and expose using deprecated but working ::set-output
 encoded = base64.b64encode(json.dumps(autograder_result).encode()).decode()
-with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-    print(f"result={encoded}", file=fh)
+print(f"::set-output name=result::{encoded}")
