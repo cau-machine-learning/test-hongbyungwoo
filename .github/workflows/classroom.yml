@@ -19,14 +19,14 @@ jobs:
       - name: Calculate max score
         id: calc-score
         run: |
-          TOTAL_SCORE=$(python3 -c "
+          MAX_POSSIBLE=$(python3 -c "
           import json
           with open('results.json', 'r') as f:
               tests = json.load(f)
-          total = sum(test['score'] for test in tests)
+          total = sum(test['max_score'] for test in tests)
           print(total)
           ")
-          echo "total_score=$TOTAL_SCORE" >> $GITHUB_OUTPUT
+          echo "total_score=$MAX_POSSIBLE" >> $GITHUB_OUTPUT
 
       - name: Run custom grader
         id: custom-grader
