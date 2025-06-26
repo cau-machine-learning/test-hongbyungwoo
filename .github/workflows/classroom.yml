@@ -16,41 +16,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Functionality Test
-        id: functionality-test
+      - name: Run custom grader
+        id: custom-grader
         uses: classroom-resources/autograding-command-grader@v1
         with:
-          test-name: Functionality Test
+          test-name: custom grader
           setup-command: ''
-          command: python3 -c "print('Passed all edge cases')"
+          command: python3 tests/custom_grader.py
           timeout: 10
-          max-score: 0.75
-
-      - name: Style Check
-        id: style-check
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Style Check
-          setup-command: ''
-          command: python3 -c "print('Minor formatting issues')"
-          timeout: 10
-          max-score: 0.5
-
-      - name: Bonus Question
-        id: bonus-question
-        uses: classroom-resources/autograding-command-grader@v1
-        with:
-          test-name: Bonus Question
-          setup-command: ''
-          command: python3 -c "print('Excellent work!')"
-          timeout: 10
-          max-score: 1.0
+          max-score: 2.25
 
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
-          FUNCTIONALITY_TEST_RESULTS: "${{ steps.functionality-test.outputs.result }}"
-          STYLE_CHECK_RESULTS: "${{ steps.style-check.outputs.result }}"
-          BONUS_QUESTION_RESULTS: "${{ steps.bonus-question.outputs.result }}"
+          CUSTOM_GRADER_RESULTS: "${{ steps.custom-grader.outputs.result }}"
         with:
-          runners: functionality_test,style_check,bonus_question
+          runners: custom_grader
