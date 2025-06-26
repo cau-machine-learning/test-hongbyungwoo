@@ -22,13 +22,15 @@ jobs:
         with:
           test-name: Functionality Test
           setup-command: ''
-          command: python3 -c "
-            import json;
-            with open('results.json', 'r') as f: tests = json.load(f);
-            test = next(t for t in tests if t['name'] == 'Functionality Test');
-            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}');
-            print(test['output']);
-            import sys; sys.exit(0)"
+          command: |
+            python3 -c "
+            import json
+            with open('results.json', 'r') as f:
+                tests = json.load(f)
+            test = next(t for t in tests if t['name'] == 'Functionality Test')
+            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}')
+            print(test['output'])
+            "
           timeout: 10
           max-score: 0.75
 
@@ -38,13 +40,15 @@ jobs:
         with:
           test-name: Style Check
           setup-command: ''
-          command: python3 -c "
-            import json;
-            with open('results.json', 'r') as f: tests = json.load(f);
-            test = next(t for t in tests if t['name'] == 'Style Check');
-            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}');
-            print(test['output']);
-            import sys; sys.exit(0)"
+          command: |
+            python3 -c "
+            import json
+            with open('results.json', 'r') as f:
+                tests = json.load(f)
+            test = next(t for t in tests if t['name'] == 'Style Check')
+            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}')
+            print(test['output'])
+            "
           timeout: 10
           max-score: 0.5
 
@@ -54,13 +58,15 @@ jobs:
         with:
           test-name: Bonus Question
           setup-command: ''
-          command: python3 -c "
-            import json;
-            with open('results.json', 'r') as f: tests = json.load(f);
-            test = next(t for t in tests if t['name'] == 'Bonus Question');
-            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}');
-            print(test['output']);
-            import sys; sys.exit(0)"
+          command: |
+            python3 -c "
+            import json
+            with open('results.json', 'r') as f:
+                tests = json.load(f)
+            test = next(t for t in tests if t['name'] == 'Bonus Question')
+            print(f'Score: {test[\"score\"]}/{test[\"max_score\"]}')
+            print(test['output'])
+            "
           timeout: 10
           max-score: 1.0
 
