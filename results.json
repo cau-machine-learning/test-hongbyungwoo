@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Functionality Test",
+    "output": "Passed all edge cases",
+    "score": 75,
+    "max_score": 100
+  },
+  {
+    "name": "Style Check",
+    "output": "Minor formatting issues",
+    "score": 50,
+    "max_score": 100
+  },
+  {
+    "name": "Bonus Question",
+    "output": "Excellent work!",
+    "score": 100,
+    "max_score": 100
+  }
+]
