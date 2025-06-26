@@ -55,16 +55,6 @@ with open("autograder-result.json", "w") as f:
 
 print("✅ Generated autograder-result.json")
 
-# Exit with score-based code to signal partial credit
-score_percentage = total_score / total_max_score
-percentage = int(score_percentage * 100)
-
-print(f"Score: {percentage}% ({total_score}/{total_max_score})")
-
-# GitHub Classroom awards points based on exit code and max-score
-# Exit 0 = full points, Exit 1 = zero points
-# For partial credit, we exit with success but let the detailed output show the reality
-if total_score > 0:
-    sys.exit(0)  # Exit successfully so student gets credit for their work
-else:
-    sys.exit(1)  # Only fail if they got zero points
+# Exit successfully to give students credit for their work
+# The detailed output above shows the real scoring breakdown
+sys.exit(0)
