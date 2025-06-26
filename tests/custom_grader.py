@@ -38,6 +38,10 @@ for test in tests:
 
 print(f"Total Score: {total_score}/{total_max_score}")
 
+# GitHub Classroom looks for this specific format for points
+print(f"Points: {total_score}")
+print(f"::set-output name=points::{total_score}")
+
 # Generate the autograder result file in the expected format
 autograder_result = {
     "version": 1,
@@ -50,8 +54,13 @@ with open("autograder-result.json", "w") as f:
 
 print("✅ Generated autograder-result.json")
 
-# Exit with appropriate code based on results
+# Exit with score-based code to signal partial credit
 if total_score == total_max_score:
-    sys.exit(0)  # All tests passed
+    sys.exit(0)  # Full credit
+elif total_score > 0:
+    # Use exit code that represents percentage (but still successful)
+    percentage = int((total_score / total_max_score) * 100)
+    print(f"Partial credit: {percentage}%")
+    sys.exit(0)  # Still exit successfully but with partial indicator
 else:
-    sys.exit(0)  # Still exit successfully to allow partial credit
+    sys.exit(1)  # No credit
