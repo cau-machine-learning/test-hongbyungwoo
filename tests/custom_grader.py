@@ -31,6 +31,10 @@ autograder_result = {
 
 # Write to expected file
 with open("autograder-result.json", "w") as f:
-    json.dump(autograder_result, f, indent=2)
+    json.dump({
+        "version": 1,
+        "tests": results
+    }, f, indent=2)
+
 
 print("✅ Generated autograder-result.json")
