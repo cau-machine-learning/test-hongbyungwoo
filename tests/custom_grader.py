@@ -56,12 +56,18 @@ with open("autograder-result.json", "w") as f:
 print("✅ Generated autograder-result.json")
 
 # Exit with score-based code to signal partial credit
-if total_score == total_max_score:
+score_percentage = total_score / total_max_score
+if score_percentage >= 1.0:
+    print(f"Perfect score! {total_score}/{total_max_score}")
     sys.exit(0)  # Full credit
+elif score_percentage >= 0.6:  # 60% or better gets partial credit
+    percentage = int(score_percentage * 100)
+    print(f"Partial credit: {percentage}% ({total_score}/{total_max_score})")
+    sys.exit(0)  # Partial credit but still successful
 elif total_score > 0:
-    # Use exit code that represents percentage (but still successful)
-    percentage = int((total_score / total_max_score) * 100)
-    print(f"Partial credit: {percentage}%")
-    sys.exit(0)  # Still exit successfully but with partial indicator
+    percentage = int(score_percentage * 100)
+    print(f"Some credit: {percentage}% ({total_score}/{total_max_score})")
+    sys.exit(0)  # Some credit
 else:
+    print(f"No credit: {total_score}/{total_max_score}")
     sys.exit(1)  # No credit
