@@ -20,3 +20,8 @@ results = [
         "max_score": 1.0
     }
 ]
+
+with open("results.json", "w") as f:
+json.dump(results, f, indent=2)
+
+print(json.dumps(results))
