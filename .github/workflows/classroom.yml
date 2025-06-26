@@ -32,7 +32,7 @@ jobs:
             print(test['output'])
             "
           timeout: 10
-          max-score: 75
+          max-score: 100
 
       - name: Style Check
         id: style-check
@@ -50,7 +50,7 @@ jobs:
             print(test['output'])
             "
           timeout: 10
-          max-score: 50
+          max-score: 100
 
       - name: Bonus Question
         id: bonus-question
