@@ -22,7 +22,7 @@ jobs:
         with:
           test-name: custom grader
           setup-command: ''
-          command: python3 tests/custom_grader.py
+          command: python3 tests/custom_grader.py && cat autograder-result.json
           timeout: 10
 
       - name: Debug output (optional)
@@ -36,4 +36,3 @@ jobs:
           CUSTOM-GRADER_RESULTS: "${{ steps.custom-grader.outputs.result }}"
         with:
           runners: custom-grader
-
