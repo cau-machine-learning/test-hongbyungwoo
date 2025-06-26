@@ -22,8 +22,9 @@ jobs:
         with:
           test-name: custom grader
           setup-command: ''
-          command: python3 tests/custom_grader.py && cat autograder-result.json
+          command: python3 tests/custom_grader.py
           timeout: 10
+          result-file: autograder-result.json  # ✅ Tells the grader to use your result JSON
 
       - name: Debug output (optional)
         run: |
